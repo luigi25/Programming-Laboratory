@@ -14,15 +14,15 @@ int main() {
     std::vector<TaskList> myAgenda;
 
     tempDate = Date(20, Months::July, 2018);
-    TaskList taskN1("Fai la spesa", tempDate, true);
+    TaskList taskN1("You must buy the bread!", tempDate, true);
     myAgenda.push_back(taskN1);
 
     tempDate = Date(22, Months::July, 2018);
-    taskN1 = TaskList("Paga le bollette", tempDate, true);
+    taskN1 = TaskList("You must pay the bill!", tempDate, true);
     myAgenda.push_back(taskN1);
 
     tempDate = Date(27, Months::July, 2018);
-    taskN1 = TaskList("Passa dalla banca", tempDate, false);
+    taskN1 = TaskList("You must go to the bank!", tempDate, false);
     myAgenda.push_back(taskN1);
     bool finish=false;
 
