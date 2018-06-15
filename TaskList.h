@@ -11,11 +11,14 @@
 class TaskList {
 public:
     explicit TaskList(std::string whatTask, Date date=Date(), bool taskDone=false);
+    Date readDueDate();
+    void printTask();
 
-    Date dueDate;
+
 private:
     std::string nameTask;
     bool taskComplete;
+    Date dueDate;
 
 
 };

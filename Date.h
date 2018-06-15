@@ -5,6 +5,8 @@
 #ifndef LABPROG_DATE_H
 #define LABPROG_DATE_H
 
+#include <iostream>
+
 enum class Months {
     January, February, March, April, May, June, July, August, September, October, November, December
 };
@@ -19,6 +21,7 @@ public:
     void setYear(int year);
     int getYear() const;
     int getMaxNumDays();
+    void printDate();
 
 private:
     int day,year;
