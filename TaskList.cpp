@@ -14,5 +14,10 @@ Date TaskList::readDueDate() {
 void TaskList::printTask() {
     std::cout<<"Target:"<<this->nameTask<<std::endl;
     std::cout<<"Expire date:"; this->dueDate.printDate(); std::cout<<std::endl;
-    std::cout<<"Completed:"<<this->taskComplete?"Yes":"No"<<std::endl<<std::endl;
+    std::cout<<"Completed:";
+    if(taskComplete)
+        std::cout<<"Yes";
+    else
+        std::cout<<"No";
+    std::cout<<std::endl;
 }

@@ -65,5 +65,5 @@ int Date::getMaxNumDays() {
 }
 
 void Date::printDate() {
-    std::cout<<this->day<<'/'<<this->month<<'/'<<this->year;
+    std::cout<<this->day<<'/'<<this->month + 1<<'/'<<this->year;
 }
