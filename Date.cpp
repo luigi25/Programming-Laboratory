@@ -5,13 +5,10 @@
 #include "Date.h"
 
 Date::Date(int d, Months m, int y) : day(d), month(m), year(y) {
-    if(day<=0||day>getMaxNumDays())
-        day=1;
+    test();
 }
 
 void Date::setDay(int day) {
-    if(day<=0||day>getMaxNumDays())
-        day=1;
     Date::day=day;
 }
 
@@ -28,7 +25,7 @@ Months Date::getMonth() const {
 }
 
 void Date::setYear(int year) {
-    Date::year=year;
+   Date::year=year;
 }
 
 int Date::getYear() const {
@@ -66,4 +63,30 @@ int Date::getMaxNumDays() {
 
 void Date::printDate() {
     std::cout<<this->day<<'/'<<this->month + 1<<'/'<<this->year;
+}
+void Date::controlMonth() noexcept(false){
+    if(month<0 || month>11)
+        throw std::runtime_error("Insert correct Month!");
+}
+
+void Date::controlYear() {
+    if(year<2018)
+        year=2018;
+}
+
+void Date::controlDay() noexcept(false) {
+    if (day<0 || day>getMaxNumDays())
+        throw std::runtime_error("Insert correct Day!");
+}
+
+bool Date::test() {
+    try {
+        controlDay();
+        controlMonth();
+        controlYear();
+    } catch (std::runtime_error &e) {
+        std::cerr << e.what() << std::endl;
+    }catch (std::runtime_error &e) {
+        std::cerr<<e.what()<< std::endl;
+    }
 }

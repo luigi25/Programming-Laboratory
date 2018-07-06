@@ -3,4 +3,4 @@ project(LabProg)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(LabProg main.cpp TaskList.h TaskList.cpp Date.h Date.cpp)
+add_executable(LabProg main.cpp Task.h Task.cpp Date.h Date.cpp)

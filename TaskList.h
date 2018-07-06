@@ -1,26 +1,37 @@
 //
-// Created by luigi on 12/06/18.
+// Created by luigi on 21/06/18.
 //
 
 #ifndef LABPROG_TASKLIST_H
 #define LABPROG_TASKLIST_H
 
 #include <string>
-#include "Date.h"
+#include "Task.h"
 
 class TaskList {
 public:
-    explicit TaskList(std::string whatTask, Date date=Date(), bool taskDone=false);
-    Date readDueDate();
-    void printTask();
+    TaskList(std::string nameList, int numbList) : nameList(nameList), numbList(numbList){};
+
+    const std::string &getNameList() const {
+        return nameList;
+    }
+
+    void setNameList(const std::string &nameList) {
+        TaskList::nameList = nameList;
+    }
+
+    int getNumbList() const {
+        return numbList;
+    }
+
+    void setNumbList(int numbList) {
+        TaskList::numbList = numbList;
+    }
 
 
 private:
-    std::string nameTask;
-    bool taskComplete;
-    Date dueDate;
-
-
+    std::string nameList;
+    int numbList;
 };
 
 

@@ -1,30 +1,31 @@
 #include <iostream>
 #include "Date.h"
-#include "TaskList.h"
+#include "Task.h"
 #include <vector>
 #include <string>
+#include <stdexcept>
 
 
 int main() {
     char command;
     int day,month, year;
     int i=0;
+    bool finish=false;
     std::string target;
     Date tempDate;
-    std::vector<TaskList> myAgenda;
+    std::vector<Task> myAgenda;
 
     tempDate = Date(20, Months::July, 2018);
-    TaskList taskN1("You must buy the bread!", tempDate, true);
+    Task taskN1("You must buy the bread!", tempDate, true);
     myAgenda.push_back(taskN1);
 
     tempDate = Date(22, Months::July, 2018);
-    taskN1 = TaskList("You must pay the bill!", tempDate, true);
+    taskN1 = Task("You must pay the bill!", tempDate, true);
     myAgenda.push_back(taskN1);
 
     tempDate = Date(27, Months::July, 2018);
-    taskN1 = TaskList("You must go to the bank!", tempDate, false);
+    taskN1 = Task("You must go to the bank!", tempDate, false);
     myAgenda.push_back(taskN1);
-    bool finish=false;
 
     while (!finish) {
         std::cout<<"Insert command:"<<std::endl;
@@ -47,11 +48,11 @@ int main() {
                         tempDate=Date(day,(Months)(month-1),year);
                     else
                         tempDate=Date(day,Months::January,year);
-                    taskN1=TaskList(target,tempDate,false);
+                    taskN1=Task(target,tempDate,false);
                     myAgenda.push_back(taskN1);
                     break;
                 case 'r':
-                    for(std::vector<TaskList>::iterator it=myAgenda.begin(); it!=myAgenda.end(); it++ ){
+                    for(std::vector<Task>::iterator it=myAgenda.begin(); it!=myAgenda.end(); it++){
                         std::cout<<"Task:"<<i<<std::endl;
                         it->printTask();
                         i++;
