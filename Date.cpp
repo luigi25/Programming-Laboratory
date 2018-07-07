@@ -5,7 +5,8 @@
 #include "Date.h"
 
 Date::Date(int d, Months m, int y) : day(d), month(m), year(y) {
-    test();
+    if(!test())
+        throw std::runtime_error("Insert correct Date!");
 }
 
 void Date::setDay(int day) {
@@ -61,22 +62,24 @@ int Date::getMaxNumDays() {
     }
 }
 
-void Date::printDate() {
-    std::cout<<this->day<<'/'<<this->month + 1<<'/'<<this->year;
+
+void Date::controlDay() noexcept(false) {
+    if (day<0 || day>getMaxNumDays())
+        throw std::runtime_error("Insert correct Day!");
 }
+
 void Date::controlMonth() noexcept(false){
     if(month<0 || month>11)
         throw std::runtime_error("Insert correct Month!");
 }
 
-void Date::controlYear() {
+void Date::controlYear() noexcept(false){
     if(year<2018)
-        year=2018;
+        throw std::runtime_error("Insert correct Year!");
 }
 
-void Date::controlDay() noexcept(false) {
-    if (day<0 || day>getMaxNumDays())
-        throw std::runtime_error("Insert correct Day!");
+void Date::printDate() {
+    std::cout<<this->day<<'/'<<this->month + 1<<'/'<<this->year;
 }
 
 bool Date::test() {
@@ -84,9 +87,15 @@ bool Date::test() {
         controlDay();
         controlMonth();
         controlYear();
-    } catch (std::runtime_error &e) {
-        std::cerr << e.what() << std::endl;
-    }catch (std::runtime_error &e) {
-        std::cerr<<e.what()<< std::endl;
+    } catch (std::runtime_error &e1) {
+        std::cerr << e1.what() << std::endl;
+        return false;
+    }catch (std::runtime_error &e2) {
+        std::cerr<<e2.what()<< std::endl;
+        return false;
+    }catch (std::runtime_error &e3){
+        std::cerr<<e3.what()<<std::endl;
+        return false;
     }
+    return true;
 }

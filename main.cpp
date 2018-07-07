@@ -44,10 +44,7 @@ int main() {
                     std::cin>>month;
                     std::cout<<"Insert year:"<<std::endl;
                     std::cin>>year;
-                    if(month>=1 && month<=12)
-                        tempDate=Date(day,(Months)(month-1),year);
-                    else
-                        tempDate=Date(day,Months::January,year);
+                    tempDate=Date(day,(Months)(month-1),year);
                     taskN1=Task(target,tempDate,false);
                     myAgenda.push_back(taskN1);
                     break;

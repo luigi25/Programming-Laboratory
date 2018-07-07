@@ -22,10 +22,10 @@ public:
     void setYear(int year);
     int getYear() const;
     int getMaxNumDays();
-    void controlMonth() noexcept(false);
-    void controlYear();
-    void printDate();
     void controlDay() noexcept(false);
+    void controlMonth() noexcept(false);
+    void controlYear() noexcept(false);
+    void printDate();
     bool test();
 private:
     int day,year;
