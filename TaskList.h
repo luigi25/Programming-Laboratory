@@ -1,12 +1,13 @@
 //
-// Created by luigi on 21/06/18.
+// Created by luigi on 07/07/18.
 //
 
 #ifndef LABPROG_TASKLIST_H
 #define LABPROG_TASKLIST_H
 
+
 #include <string>
-#include "Task.h"
+#include <memory>
 
 class TaskList {
 public:
@@ -33,6 +34,8 @@ private:
     std::string nameList;
     int numbList;
 };
+
+
 
 
 #endif //LABPROG_TASKLIST_H
