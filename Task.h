@@ -10,7 +10,7 @@
 
 class Task {
 public:
-    explicit Task(std::string whatTask, Date date=Date(), bool taskDone=false);
+    explicit Task(std::string whatTask, Date date=Date(), int numbTask=0, bool taskDone=false);
     Date readDueDate();
     void printTask();
 
@@ -19,6 +19,7 @@ private:
     std::string nameTask;
     bool taskComplete;
     Date dueDate;
+    int numbTask;
 
 
 };

@@ -3,4 +3,5 @@ project(LabProg)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(LabProg main.cpp Task.h Task.cpp Date.h Date.cpp TaskList.h)
+add_executable(LabProg main.cpp Task.h Task.cpp Date.h Date.cpp)
+add_subdirectory(unitTesting)

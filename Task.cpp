@@ -4,7 +4,7 @@
 
 #include "Task.h"
 
-Task::Task(std::string whatTask, Date date, bool taskDone) : nameTask(whatTask), dueDate(date), taskComplete(taskDone) {
+Task::Task(std::string whatTask, Date date, int numbTask ,bool taskDone) : nameTask(whatTask), dueDate(date), numbTask(numbTask),taskComplete(taskDone) {
 }
 
 Date Task::readDueDate() {

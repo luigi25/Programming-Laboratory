@@ -10,21 +10,22 @@ int main() {
     char command;
     int day,month, year;
     int i=0;
+    int j=0;
     bool finish=false;
     std::string target;
     Date tempDate;
     std::vector<Task> myAgenda;
 
     tempDate = Date(20, Months::July, 2018);
-    Task taskN1("You must buy the bread!", tempDate, true);
+    Task taskN1("You must buy the bread!", tempDate,1,true);
     myAgenda.push_back(taskN1);
 
     tempDate = Date(22, Months::July, 2018);
-    taskN1 = Task("You must pay the bill!", tempDate, true);
+    taskN1 = Task("You must pay the bill!", tempDate, 2 , true);
     myAgenda.push_back(taskN1);
 
     tempDate = Date(27, Months::July, 2018);
-    taskN1 = Task("You must go to the bank!", tempDate, false);
+    taskN1 = Task("You must go to the bank!", tempDate, 3 ,false);
     myAgenda.push_back(taskN1);
 
     while (!finish) {
@@ -45,7 +46,7 @@ int main() {
                     std::cout<<"Insert year:"<<std::endl;
                     std::cin>>year;
                     tempDate=Date(day,(Months)(month-1),year);
-                    taskN1=Task(target,tempDate,false);
+                    taskN1=Task(target,tempDate,j,false);
                     myAgenda.push_back(taskN1);
                     break;
                 case 'r':
