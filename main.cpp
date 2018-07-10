@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Date.h"
 #include "Task.h"
+#include "TaskList.h"
 #include <vector>
 #include <string>
 #include <stdexcept>
@@ -9,34 +10,48 @@
 int main() {
     char command;
     int day,month, year;
+    int list;
     int i=0;
     int j=0;
     bool finish=false;
-    std::string target;
+    std::string target, mylist;
     Date tempDate;
-    std::vector<Task> myAgenda;
+    TaskList myAgenda("MustToDo",1);
+    std::vector<TaskList> lists;
 
     tempDate = Date(20, Months::July, 2018);
-    Task taskN1("You must buy the bread!", tempDate,1,true);
+    Task taskN1("You must buy the bread!", tempDate,true);
     myAgenda.push_back(taskN1);
 
     tempDate = Date(22, Months::July, 2018);
-    taskN1 = Task("You must pay the bill!", tempDate, 2 , true);
+    taskN1 = Task("You must pay the bill!", tempDate, true);
     myAgenda.push_back(taskN1);
 
     tempDate = Date(27, Months::July, 2018);
-    taskN1 = Task("You must go to the bank!", tempDate, 3 ,false);
+    taskN1 = Task("You must go to the bank!", tempDate,false);
     myAgenda.push_back(taskN1);
+    lists.push_back(myAgenda);
 
     while (!finish) {
         std::cout<<"Insert command:"<<std::endl;
+        std::cout<<"l->Insert new list"<<std::endl;
         std::cout<<"w->Insert new task"<<std::endl;
         std::cout<<"r->Read your tasks"<<std::endl;
         std::cout<<"q->Quit"<<std::endl;
         std::cin>>command;
         if(std::cin){
             switch(command){
+                case'l':
+                    std::cout<<"Insert list name"<<std::endl;
+                    std::cin>>mylist;
+                    std::cout<<"Insert list number"<<std::endl;
+                    std::cin>>list;
+                    myAgenda=TaskList(mylist, list);
+                    lists.push_back(myAgenda);
+                    break;
                 case 'w':
+                    std::cout<<"Choose list"<<std::endl;
+                    std::cin>>list;
                     std::cout<<"Insert target:"<<std::endl;
                     std::cin>>target;
                     std::cout<<"Insert day:"<<std::endl;
@@ -46,14 +61,26 @@ int main() {
                     std::cout<<"Insert year:"<<std::endl;
                     std::cin>>year;
                     tempDate=Date(day,(Months)(month-1),year);
-                    taskN1=Task(target,tempDate,j,false);
-                    myAgenda.push_back(taskN1);
+                    taskN1=Task(target,tempDate,false);
+                    for(auto it=lists.begin(); it!=lists.end(); it++){
+                        if(it->getNumbList()==list){
+                            it->push_back(taskN1);
+                            break;
+                        }
+                    }
                     break;
                 case 'r':
-                    for(std::vector<Task>::iterator it=myAgenda.begin(); it!=myAgenda.end(); it++){
-                        std::cout<<"Task:"<<i<<std::endl;
-                        it->printTask();
-                        i++;
+                    std::cout<<" What list?"<<std::endl;
+                    std::cin>>list;
+                    for(auto it=lists.begin(); it!=lists.end(); it++) {
+                        if (it->getNumbList() == list) {
+                            for (std::vector<Task>:: const_iterator itr = it->getAgenda().begin(); itr != it->getAgenda().end(); itr++) {
+                                std::cout << "Task:" << i << std::endl;
+                                itr->printTask();
+                                i++;
+                            }
+                            break;
+                        }
                     }
                     break;
                 case 'q':

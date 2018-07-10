@@ -25,7 +25,7 @@ public:
     void controlDay() noexcept(false);
     void controlMonth() noexcept(false);
     void controlYear() noexcept(false);
-    void printDate();
+    void printDate() const;
     bool test();
 private:
     int day,year;

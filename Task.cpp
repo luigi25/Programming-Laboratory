@@ -4,14 +4,14 @@
 
 #include "Task.h"
 
-Task::Task(std::string whatTask, Date date, int numbTask ,bool taskDone) : nameTask(whatTask), dueDate(date), numbTask(numbTask),taskComplete(taskDone) {
+Task::Task(std::string whatTask, Date date ,bool taskDone) : nameTask(whatTask), dueDate(date),taskComplete(taskDone) {
 }
 
 Date Task::readDueDate() {
     return this->dueDate;
 }
 
-void Task::printTask() {
+void Task::printTask() const {
     std::cout<<"Target:"<<this->nameTask<<std::endl;
     std::cout<<"Expire date:"; this->dueDate.printDate(); std::cout<<std::endl;
     std::cout<<"Completed:";

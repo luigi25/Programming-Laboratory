@@ -64,7 +64,7 @@ int Date::getMaxNumDays() {
 
 
 void Date::controlDay() noexcept(false) {
-    if (day<0 || day>getMaxNumDays())
+    if (day<1 || day>getMaxNumDays())
         throw std::runtime_error("Insert correct Day!");
 }
 
@@ -78,7 +78,7 @@ void Date::controlYear() noexcept(false){
         throw std::runtime_error("Insert correct Year!");
 }
 
-void Date::printDate() {
+void Date::printDate() const {
     std::cout<<this->day<<'/'<<this->month + 1<<'/'<<this->year;
 }
 

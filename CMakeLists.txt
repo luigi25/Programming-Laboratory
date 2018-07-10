@@ -1,7 +1,3 @@
-cmake_minimum_required(VERSION 3.10)
-project(LabProg)
-
-set(CMAKE_CXX_STANDARD 11)
-
-add_executable(LabProg main.cpp Task.h Task.cpp Date.h Date.cpp)
-add_subdirectory(unitTesting)
+include_directories(${gtest_SOURCE_DIR}/include${gtest_SOURCE_DIR})
+add_executable(unitTesting DateTests.cpp)
+target_link_libraries(unitTesting gtest gtest_main)
