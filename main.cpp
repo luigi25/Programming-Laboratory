@@ -11,8 +11,7 @@ int main() {
     char command;
     int day,month, year;
     int list;
-    int i=0;
-    int j=0;
+    int i=1;
     bool finish=false;
     std::string target, mylist;
     Date tempDate;
@@ -46,6 +45,13 @@ int main() {
                     std::cin>>mylist;
                     std::cout<<"Insert list number"<<std::endl;
                     std::cin>>list;
+                    if(list == 1){
+                        std::cerr<<"Error! List already exist."<<std::endl;
+                        break;
+                    } else if(list<=0){
+                        std::cerr<<"Incorrect number"<<std::endl;
+                        break;
+                    }
                     myAgenda=TaskList(mylist, list);
                     lists.push_back(myAgenda);
                     break;
@@ -73,13 +79,13 @@ int main() {
                     std::cout<<" What list?"<<std::endl;
                     std::cin>>list;
                     for(auto it=lists.begin(); it!=lists.end(); it++) {
-                        if (it->getNumbList() == list) {
-                            for (std::vector<Task>:: const_iterator itr = it->getAgenda().begin(); itr != it->getAgenda().end(); itr++) {
+                        if (list ==it->getNumbList()) {
+                            myAgenda.printTaskList();
+                            for (auto itr = it->getAgenda().begin(); itr != it->getAgenda().end(); itr++) {
                                 std::cout << "Task:" << i << std::endl;
                                 itr->printTask();
                                 i++;
                             }
-                            break;
                         }
                     }
                     break;

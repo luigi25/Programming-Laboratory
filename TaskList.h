@@ -28,9 +28,10 @@ public:
     void setNumbList(int numbList) {
         TaskList::numbList = numbList;
     }
-    void push_back(const Task&);
 
-    const std::vector<Task> &getAgenda() const;
+    void push_back(const Task&);
+    const std::vector<Task> &getAgenda();
+    void printTaskList() const;
 
 
 private:
