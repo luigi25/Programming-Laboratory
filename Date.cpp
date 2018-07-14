@@ -10,6 +10,8 @@ Date::Date(int d, Months m, int y) : day(d), month(m), year(y) {
 }
 
 void Date::setDay(int day) {
+    if(!test())
+        throw std::runtime_error("Insert correct Date!");
     Date::day=day;
 }
 
@@ -18,14 +20,18 @@ int Date::getDay() const {
 }
 
 void Date::setMonth(Months month) {
+    if(!test())
+        throw std::runtime_error("Insert correct Date!");
     Date::month=month;
 }
 
-Months Date::getMonth() const {
+Months Date::getMonth() const {;
     return month;
 }
 
 void Date::setYear(int year) {
+    if(!test())
+        throw std::runtime_error("Insert correct Date!");
    Date::year=year;
 }
 
@@ -58,7 +64,10 @@ int Date::getMaxNumDays() {
         case Months::December:
             return 31;
         default:
-            return 28;
+            if (!(year % 4))
+                return 29;
+            else
+                return 28;
     }
 }
 

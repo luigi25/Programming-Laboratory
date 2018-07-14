@@ -5,23 +5,21 @@
 #ifndef LABPROG_TASK_H
 #define LABPROG_TASK_H
 
-
-
 #include <string>
 #include "Date.h"
 
 class Task {
 public:
-    explicit Task(std::string whatTask, Date date=Date(), bool taskDone=false);
+    Task(std::string whatTask,int numbTask, Date date ,bool taskDone) : nameTask(whatTask),numbTask(numbTask), dueDate(date),taskComplete(taskDone) {};
     Date readDueDate();
     void printTask() const;
 
 
 private:
     std::string nameTask;
+    int numbTask;
     bool taskComplete;
     Date dueDate;
-
 
 };
 #endif //LABPROG_TASK_H

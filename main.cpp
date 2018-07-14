@@ -11,7 +11,8 @@ int main() {
     char command;
     int day,month, year;
     int list;
-    int i=1;
+    int i=4;
+    int j=0;
     bool finish=false;
     std::string target, mylist;
     Date tempDate;
@@ -19,22 +20,23 @@ int main() {
     std::vector<TaskList> lists;
 
     tempDate = Date(20, Months::July, 2018);
-    Task taskN1("You must buy the bread!", tempDate,true);
-    myAgenda.push_back(taskN1);
+    Task taskN1("You must buy the bread!",1 ,tempDate,true);
+    myAgenda.addTask(taskN1);
 
     tempDate = Date(22, Months::July, 2018);
-    taskN1 = Task("You must pay the bill!", tempDate, true);
-    myAgenda.push_back(taskN1);
+    taskN1 = Task("You must pay the bill!",2, tempDate, true);
+    myAgenda.addTask(taskN1);
 
     tempDate = Date(27, Months::July, 2018);
-    taskN1 = Task("You must go to the bank!", tempDate,false);
-    myAgenda.push_back(taskN1);
+    taskN1 = Task("You must go to the bank!",3 ,tempDate,false);
+    myAgenda.addTask(taskN1);
     lists.push_back(myAgenda);
 
     while (!finish) {
         std::cout<<"Insert command:"<<std::endl;
         std::cout<<"l->Insert new list"<<std::endl;
         std::cout<<"w->Insert new task"<<std::endl;
+        std::cout<<"c->Delete task"<<std::endl;
         std::cout<<"r->Read your tasks"<<std::endl;
         std::cout<<"q->Quit"<<std::endl;
         std::cin>>command;
@@ -67,25 +69,33 @@ int main() {
                     std::cout<<"Insert year:"<<std::endl;
                     std::cin>>year;
                     tempDate=Date(day,(Months)(month-1),year);
-                    taskN1=Task(target,tempDate,false);
-                    for(auto it=lists.begin(); it!=lists.end(); it++){
-                        if(it->getNumbList()==list){
-                            it->push_back(taskN1);
+                    taskN1=Task(target,i,tempDate,false);
+                    i++;
+                    for (auto &it : lists) {
+                        if(it.getNumbList()==list){
+                            it.addTask(taskN1);
                             break;
                         }
+                    }
+                    break;
+                case 'c':
+                    std::cout<<"Choose list"<<std::endl;
+                    std::cin>>list;
+                    for (auto &it : lists) {
+                        std::cout << "Task number:" << std::endl;
+                        std::cin >>j;
+                        it.removeTask(j-1);
+                        break;
                     }
                     break;
                 case 'r':
                     std::cout<<" What list?"<<std::endl;
                     std::cin>>list;
-                    for(auto it=lists.begin(); it!=lists.end(); it++) {
-                        if (list ==it->getNumbList()) {
+                    for (auto &it : lists) {
+                        if (list == it.getNumbList()) {
                             myAgenda.printTaskList();
-                            for (auto itr = it->getAgenda().begin(); itr != it->getAgenda().end(); itr++) {
-                                std::cout << "Task:" << i << std::endl;
-                                itr->printTask();
-                                i++;
-                            }
+                            for (const auto &itr : it.getAgenda())
+                                itr.printTask();
                         }
                     }
                     break;

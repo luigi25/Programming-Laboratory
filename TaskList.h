@@ -29,7 +29,8 @@ public:
         TaskList::numbList = numbList;
     }
 
-    void push_back(const Task&);
+    void addTask(Task t);
+    void removeTask(int i);
     const std::vector<Task> &getAgenda();
     void printTaskList() const;
 
