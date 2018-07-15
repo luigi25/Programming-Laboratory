@@ -82,10 +82,12 @@ int main() {
                     std::cout<<"Choose list"<<std::endl;
                     std::cin>>list;
                     for (auto &it : lists) {
-                        std::cout << "Task number:" << std::endl;
-                        std::cin >>j;
-                        it.removeTask(j-1);
-                        break;
+                        if(it.getNumbList()==list) {
+                            std::cout << "Task number:" << std::endl;
+                            std::cin >>j;
+                            it.removeTask(j - 1);
+                            break;
+                        }
                     }
                     break;
                 case 'r':
