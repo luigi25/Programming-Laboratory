@@ -11,7 +11,7 @@ Date::Date(int d, Months m, int y) : day(d), month(m), year(y) {
 
 void Date::setDay(int day) {
     if(!test())
-        throw std::runtime_error("Insert correct Date!");
+        throw std::runtime_error("Insert correct Day!");
     Date::day=day;
 }
 
@@ -21,7 +21,7 @@ int Date::getDay() const {
 
 void Date::setMonth(Months month) {
     if(!test())
-        throw std::runtime_error("Insert correct Date!");
+        throw std::runtime_error("Insert correct Month!");
     Date::month=month;
 }
 
@@ -31,7 +31,7 @@ Months Date::getMonth() const {;
 
 void Date::setYear(int year) {
     if(!test())
-        throw std::runtime_error("Insert correct Date!");
+        throw std::runtime_error("Insert correct Year!");
    Date::year=year;
 }
 

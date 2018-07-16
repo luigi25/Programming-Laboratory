@@ -23,7 +23,7 @@ TEST(Date,ExceptionsThrow){
         EXPECT_EQ(e.what(),std::string("Day incorrect"));
     }
     try{
-        Date d(31,July,2018);
+        Date d(31,June,2018);
         FAIL() <<"Expected runtime_error";
     }catch(std::runtime_error const &e){
         EXPECT_EQ(e.what(),std::string("Month incorrect"));

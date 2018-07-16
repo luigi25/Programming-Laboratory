@@ -85,7 +85,7 @@ int main() {
                         if(it.getNumbList()==list) {
                             std::cout << "Task number:" << std::endl;
                             std::cin >>j;
-                            it.removeTask(j - 1);
+                            it.removeTask(j-1);
                             break;
                         }
                     }
