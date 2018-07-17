@@ -54,8 +54,8 @@ TEST(TaskList, AddTasks){
 TEST(TaskList, RemoveTasks){
     Date d3(20, February, 2024);
     Task myTask("importantTask",0,d3,true);
-    Task goodTask("newTask",1,d3,false);
-    Task testTask("newTask",2,d3,true);
+    Task TestTask("newTask",1,d3,false);
+    Task testTask("newTask now",2,d3,true);
     TaskList t("nameTask", 45);
     t.addTask(myTask);
     t.removeTask(0);
@@ -64,8 +64,9 @@ TEST(TaskList, RemoveTasks){
     t.addTask(testTask);
     ASSERT_EQ(2,testTask.getNumbTask());
     t.removeTask(0);
+    ASSERT_EQ(1, TestTask.getNumbTask());
     t.removeTask(2);
-    t.addTask(goodTask);
+    t.addTask(TestTask);
     t.removeTask(4567);
-    ASSERT_EQ(1,goodTask.getNumbTask());
+    ASSERT_EQ(1,TestTask.getNumbTask());
 }

@@ -69,9 +69,12 @@ int main() {
                     std::cin>>month;
                     std::cout<<"Insert year:"<<std::endl;
                     std::cin>>year;
-                    tempDate=Date(day,(Months)(month-1),year);
-                    taskN1=Task(target,i,tempDate,false);
-                    i++;
+                    tempDate = Date(day, (Months)(month-1), year);
+                    if(tempDate.test()) {
+                    taskN1 = Task(target, i, tempDate, false);
+                        i++;
+                    } else
+                        break;
                     for (auto &it : lists) {
                         if(it.getNumbList()==list){
                             it.addTask(taskN1);

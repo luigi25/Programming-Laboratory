@@ -4,7 +4,9 @@
 
 #include "Date.h"
 
-Date::Date(int d, Months m, int y) : day(d), month(m), year(y) {}
+Date::Date(int d, Months m, int y) : day(d), month(m), year(y) {
+    test();
+}
 
 void Date::setDay(int day) {
     if(!test())
@@ -22,7 +24,7 @@ void Date::setMonth(Months month) {
     Date::month=month;
 }
 
-Months Date::getMonth() const {;
+Months Date::getMonth() const {
     return month;
 }
 
