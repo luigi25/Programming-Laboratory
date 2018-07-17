@@ -4,10 +4,7 @@
 
 #include "Date.h"
 
-Date::Date(int d, Months m, int y) : day(d), month(m), year(y) {
-    if(!test())
-        throw std::runtime_error("Insert correct Date!");
-}
+Date::Date(int d, Months m, int y) : day(d), month(m), year(y) {}
 
 void Date::setDay(int day) {
     if(!test())

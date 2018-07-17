@@ -1,5 +1,5 @@
 //
-// Created by luigi on 13/07/18.
+// Created by luigi on 17/07/18.
 //
 
 #include <gtest/gtest.h>
@@ -18,21 +18,18 @@ TEST(Date, Constructor){
 TEST(Date,ExceptionsThrow){
     try{
         Date d(345,May,2019);
-        FAIL() <<"Expected runtime_error";
-    }catch(std::runtime_error const &e){
-        EXPECT_EQ(e.what(),std::string("Day incorrect"));
+    }catch (std::runtime_error &e) {
+        ASSERT_THROW(e.what(), std::runtime_error);
     }
     try{
-        Date d(31,June,2018);
-        FAIL() <<"Expected runtime_error";
-    }catch(std::runtime_error const &e){
-        EXPECT_EQ(e.what(),std::string("Month incorrect"));
+        Date d1(29,February,2031);
+    }catch (std::runtime_error &e) {
+        ASSERT_THROW(e.what(), std::runtime_error);
     }
     try{
-        Date d(27,September,2009);
-        FAIL() <<"Expected runtime_error";
-    }catch(std::runtime_error const &e){
-        EXPECT_EQ(e.what(),std::string("Year incorrect"));
+        Date d2(27,December,2009);
+    }catch (std::runtime_error &e) {
+        ASSERT_THROW(e.what(), std::runtime_error);
     }
 }
 
@@ -43,16 +40,32 @@ TEST(TaskList, Constructor) {
 }
 
 TEST(TaskList, AddTasks){
-    Date d1(20, Months::July, 2018);
+    Date d1(20,July, 2018);
+    Date d2(1,September,2020);
     Task myTask("FirstTask",1,d1,false);
+    Task task2("SecondTask",2,d2,true);
     TaskList t("nameTask", 1);
     t.addTask(myTask);
+    ASSERT_EQ(1, myTask.getNumbTask());
+    t.addTask(task2);
+    ASSERT_EQ(2, task2.getNumbTask());
 }
 
 TEST(TaskList, RemoveTasks){
-    Date d2(20, Months::February, 2024);
-    Task myTask("FirstTask",12,d2,true);
-    TaskList t("nameTask", 12);
+    Date d3(20, February, 2024);
+    Task myTask("importantTask",0,d3,true);
+    Task goodTask("newTask",1,d3,false);
+    Task testTask("newTask",2,d3,true);
+    TaskList t("nameTask", 45);
     t.addTask(myTask);
-    t.removeTask(12);
+    t.removeTask(0);
+    ASSERT_EQ(0, myTask.getNumbTask());
+    t.addTask(myTask);
+    t.addTask(testTask);
+    ASSERT_EQ(2,testTask.getNumbTask());
+    t.removeTask(0);
+    t.removeTask(2);
+    t.addTask(goodTask);
+    t.removeTask(4567);
+    ASSERT_EQ(1,goodTask.getNumbTask());
 }

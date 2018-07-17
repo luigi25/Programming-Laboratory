@@ -14,6 +14,10 @@ public:
     Date readDueDate();
     void printTask() const;
 
+    int getNumbTask() const {
+        return numbTask;
+    }
+
 
 private:
     std::string nameTask;
