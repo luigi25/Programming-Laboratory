@@ -14,7 +14,8 @@ int main() {
     int i=4;
     int j=0;
     bool finish=false;
-    std::string target, mylist;
+    std::string target;
+    std::string listName;
     Date tempDate;
     TaskList myAgenda("MustToDo",1);
     std::vector<TaskList> lists;
@@ -44,7 +45,7 @@ int main() {
             switch(command){
                 case'l':
                     std::cout<<"Insert list name"<<std::endl;
-                    std::cin>>mylist;
+                    std::cin>>listName;
                     std::cout<<"Insert list number"<<std::endl;
                     std::cin>>list;
                     if(list == 1){
@@ -54,7 +55,7 @@ int main() {
                         std::cerr<<"Incorrect number"<<std::endl;
                         break;
                     }
-                    myAgenda=TaskList(mylist, list);
+                    myAgenda=TaskList(listName, list);
                     lists.push_back(myAgenda);
                     break;
                 case 'w':
